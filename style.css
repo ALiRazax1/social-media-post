@@ -1,0 +1,4 @@
+textarea{resize: none;}
+textarea,input{box-shadow: none !important;}
+button{width: 50%;}
+.hide{display: none;}
