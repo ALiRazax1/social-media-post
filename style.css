@@ -1,4 +1,14 @@
-textarea{resize: none;}
+textarea{resize: none;height: 200px;}
 textarea,input{box-shadow: none !important;}
-button{width: 50%;}
-.hide{display: none;}
+button{width: 50%;color: #08295a;}
+.post-btns{cursor: pointer;}
+.commentSection{display: none;}
+#commentInput{border: none !important; border-bottom: 1px solid rgba(128, 128, 128, 0.479) !important;}
+
+@media only screen and (max-width:786px) {
+    .w-75,.w-50{width: 100% !important;}
+    button{width: 100%;} 
+    textarea{height: 150px;}
+
+    
+}

@@ -14,16 +14,16 @@
 <div class="container-fluid">
     <div class="row row-cols-1">
         <div class="col w-75 mx-auto">
-            <div class="border rounded-2 mt-5 p-3"><label for="" class="form-label">Userame</label>
+            <div class="border rounded-2 mt-5 p-2"><label for="" class="form-label">Userame</label>
                 <input type="text" class="form-control w-50" id="username">
                 <label for="" class="form-label">Title</label>
                 <input type="text" class="form-control w-50" id="title"><label for="" class="form-label">Description</label>
-                <textarea class="form-control" name="" id="desc" rows="10"></textarea>
-                <div class="my-3  bgImagesContainer row row-cols-2 row-cols-md-4"><div class="col">
-                    <img class="bg-image w-100 h-100" onclick="selectedImage('bg1.avif')" src="bg1.jpg" alt=""></div>
-                    <div class="col"><img class="bg-image w-100 h-100" onclick="selectedImage('bg2.webp')" src="bg2.webp" alt=""></div>
-                   <div class="col"> <img class="bg-image w-100 h-100" onclick="selectedImage('bg3.avif')" src="bg3.avif" alt=""></div>
-                    <div class="col"><img class="bg-image w-100 h-100" onclick="selectedImage('bg4.jpg')" src="bg4.jpg" alt=""></div>
+                <textarea class="form-control" name="" id="desc"></textarea>
+                <div class="my-3  bgImagesContainer row row-cols-2 row-cols-md-4 gy-2 gx-2"><div class="col">
+                    <img class="bg-image w-100 h-100 rounded-1" onclick="selectedImage('bg1.jpg')" src="bg1.jpg" alt=""></div>
+                    <div class="col"><img class="bg-image w-100 h-100 rounded-1" onclick="selectedImage('bg2.webp')" src="bg2.webp" alt=""></div>
+                   <div class="col"> <img class="bg-image w-100 h-100 rounded-1" onclick="selectedImage('bg3.avif')" src="bg3.avif" alt=""></div>
+                    <div class="col"><img class="bg-image w-100 h-100 rounded-1" onclick="selectedImage('bg4.jpg')" src="bg4.jpg" alt=""></div>
                 </div>
                 <button onclick="submitPost()" class="d-block btn btn-primary mt-4 mx-auto   ">Post</button>
             </div>
@@ -51,7 +51,7 @@
 
 
 
-<div id="post" class="hide">
+<div id="post" class="d-none">
 <div  class="card my-4 ">
     <div class="card-header d-flex justify-content-between">
        <span id="post-username">
@@ -65,9 +65,11 @@
         <h5 class="card-title" id="post-title"></h5>
         <p class="card-text" id="post-desc"></p>
     </div>
-    <div class="d-flex justify-content-between px-5 border-top border-secondary-subtle py-3"><div onclick="changeIcon()" id="like"> </div>
-            <div> </div>
-            <div></div></div>
+    <div class="d-flex justify-content-between px-5 border-top border-secondary-subtle py-3 post-btns"><div onclick="changeIcon()" id="like"><i class="bi bi-heart text-body-secondary"></i> Like</div>
+            <div onclick="writeComment()" ><i class="bi bi-chat text-body-secondary"></i> Comment </div>
+            <div><i class="bi bi-share text-body-secondary"></i> Share</div></div> <div class="px-3" id="a"></div>
+            <div class="commentSection p-2 justify-content-between">
+            <input class="form-control border-primary-subtle" id="commentInput" type="text"><i class="bi bi-send-fill h4 text-primary" id="comment" onclick="comment()"></i></div>
     </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

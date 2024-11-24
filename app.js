@@ -4,9 +4,10 @@ let selectImgPath ;
 function selectedImage(src) {
    let imagesBg = document.getElementsByClassName('bg-image')
     for(let i = 0; i < imagesBg.length; i++) {
-        // imagesBg[i].className = 'bg-image'
+      imagesBg[i].style.border = '2px solid transparent'
+
     }
-    event.target.classList.add('selectedImage')
+    event.target.style.border = '2px solid #08295a'
     selectImgPath = src
 }
 
@@ -21,6 +22,7 @@ function submitPost() {
   let postTime = document.getElementById("post-time")
   let postTitle = document.getElementById("post-title")
   let postDesc = document.getElementById("post-desc")
+  let bgImage = document.getElementById("card-img")
   let listingContainer = document.querySelector("#listingContainer");
 
   if (userName.value.trim() !== "") {
@@ -30,7 +32,7 @@ function submitPost() {
         postTime.innerText = currentDateTime
         postTitle.innerText = title.value
         postDesc.innerText = description.value
-        post.content.cloneNode(true);
+        bgImage.style.backgroundImage = `url('${selectImgPath}')`
         listingContainer.innerHTML += post.innerHTML;
         console.log(post.innerHTML);
         
@@ -41,48 +43,53 @@ function submitPost() {
         
         
         
-//         `<div class="card my-4">
-// <div class="card-header d-flex justify-content-between">
-//    <span>
-//     ~@${userName.value}
-//    </span>
-//    <span>
-//     ${currentDateTime}
-//    </span>
-// </div>
-// <div  style="background-image: url('${selectImgPath}')" class="card-body postCardBody">
-//     <h5 class="card-title">${title.value}</h5>
-//     <p class="card-text">${description.value}</p>
-// </div>
-// <div class="d-flex justify-content-between px-5 border-top border-secondary-subtle py-3"><div onclick="changeIcon() id="like"><i class="bi bi-heart text-body-secondary"></i> Like</div>
-//         <div><i class="bi bi-chat"></i> Comment</div>
-//         <div>Share</div></div>
-// </div>`;
 
 
+        title.focus();
+        title.classList.remove("border-danger")
+        description.focus();
+        description.classList.remove("border-danger")
+        userName.focus();
+        userName.classList.remove("border-danger")
 
 userName.value = ''
 title.value = ''
 description.value = ''
       } else {
-        alert("description is required");
+        description.focus();
+        description.classList.add("border-danger") ;
+        
       }
-    } else {
-      alert("Title is Required");
+    } else {title.focus();
+      title.classList.add("border-danger") ;
+      ;
     }
-  } else {
-    alert("Username is required");
+  } else {userName.focus();
+    userName.classList.add("border-danger") ;
+    
   }
 }
 
+function changeIcon() {
+  let likeButton = document.getElementById("like"); 
+  let isLiked = likeButton.innerHTML.includes("bi-heart-fill"); 
 
-// let liked = document.getElementById("like").innerHTML = `<i class="bi bi-heart-fill text-danger"></i> Like`
-// let unlike = document.getElementById("like").innerHTML = `<i class="bi bi-heart text-body-secondary"></i> Like`
-// function changeIcon(){
-//   if(liked){
-//     liked.innerHTML = unlike
-//       }else{
-//     unlike.innerHTML = liked
-//     alert("asd")
-//   }
-// }
+  if (isLiked) {
+    likeButton.innerHTML = `<i class="bi bi-heart text-body-secondary"></i> Like`; 
+  } else {
+    likeButton.innerHTML = `<i class="bi bi-heart-fill text-danger"></i> Like`; 
+  }
+}
+function writeComment(){
+  document.querySelector(".commentSection").style.display = "flex"
+}
+function comment() {
+  let comment = document.getElementById("a");
+  let commentInput = document.getElementById("commentInput");
+  let commentText = commentInput.value.trim();
+
+  if (commentText !== "") {
+comment.innerHTML += `<h6>${document.getElementById("post-username").innerText}</h6> <p>${commentText}</p>`;
+    commentInput.value = "";
+  }
+}
